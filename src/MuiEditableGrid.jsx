@@ -4,9 +4,9 @@ import { DataGrid } from '@mui/x-data-grid';
 const MuiEditableGrid = () => {
 
   const [ rows, setRows ] = useState([
-    { id: 1, broj: 1, Konto: 'malo li je', Duguje: 50, Potražuje: 60, Datum: new Date() },
-    { id: 2, broj: 2, Konto: 'malo li je', Duguje: 50, Potražuje: 60, Datum: new Date() },
-    { id: 3, broj: 3, Konto: 'malo li je', Duguje: 50, Potražuje: 60, Datum: new Date() },
+    { id: 1, broj: 1, Konto: 'Konto 1', Duguje: 50, Potražuje: 60, Datum: new Date() },
+    { id: 2, broj: 2, Konto: 'Konto 2', Duguje: 50, Potražuje: 60, Datum: new Date() },
+    { id: 3, broj: 3, Konto: 'Konto 3', Duguje: 50, Potražuje: 60, Datum: new Date() },
   ])
 
   const columns = [
