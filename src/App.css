@@ -4,6 +4,7 @@
 
 .editable-grid {
   width: 80%;
+  max-width: 1400px;
   height: 800px;
   padding: 1rem;
   margin: 2rem auto;
@@ -12,6 +13,7 @@
 
 .grid-cell {
   text-align: center;
+  font-size: 1.1rem;
 }
 
 .add-grid-row-btn {
