@@ -1,12 +1,14 @@
 import { useState } from 'react'
 import { DataGrid } from '@mui/x-data-grid';
 
+import { formatDate } from './helpers/helpers';
+
 const MuiEditableGrid = () => {
 
   const [ rows, setRows ] = useState([
-    { id: 1, broj: 1, Konto: 'Konto 1', Duguje: 50, Potražuje: 60, Datum: new Date() },
-    { id: 2, broj: 2, Konto: 'Konto 2', Duguje: 50, Potražuje: 60, Datum: new Date() },
-    { id: 3, broj: 3, Konto: 'Konto 3', Duguje: 50, Potražuje: 60, Datum: new Date() },
+    { id: 1, broj: 1, Konto: 'Konto 1', Duguje: 50, Potražuje: 60, Datum: formatDate(new Date()) },
+    { id: 2, broj: 2, Konto: 'Konto 2', Duguje: 50, Potražuje: 60, Datum: formatDate(new Date()) },
+    { id: 3, broj: 3, Konto: 'Konto 3', Duguje: 50, Potražuje: 60, Datum: formatDate(new Date()) },
   ])
 
   const columns = [
@@ -24,7 +26,7 @@ const MuiEditableGrid = () => {
       Konto: '',
       Duguje: 0,
       Potražuje: 0,
-      Datum: new Date()
+      Datum: formatDate(new Date())
     }
     
     setRows(prevRows => [ ...prevRows, newBlankRow ] )
