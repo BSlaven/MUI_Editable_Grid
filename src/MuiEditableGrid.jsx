@@ -11,13 +11,14 @@ const MuiEditableGrid = () => {
 
   const columns = [
     { field: 'broj', headerName: 'broj', type: 'number', width: 50, headerAlign: 'center' },
-    { field: 'Konto', headerName: 'Konto', type: 'string', width: 130, editable: true, headerAlign: 'left' },
-    { field: 'Duguje', headerName: 'Duguje', type: 'number', width: 130, editable: true, headerAlign: 'left' },
+    { field: 'Konto', headerName: 'Konto', type: 'string', width: 130, editable: true, headerAlign: 'left', valueSetter: setNewValue },
+    { field: 'Duguje', headerName: 'Duguje', type: 'number', width: 130, editable: true, headerAlign: 'left', valueGetter: getNewValue },
     { field: 'Potražuje', headerName: 'Potražuje', type: 'number', width: 130, editable: true, headerAlign: 'left' },
     { field: 'Datum', headerName: 'Datum', type: 'date', width: 130, editable: true, headerAlign: 'left' },
   ];
 
   const handleAddRow = () => {
+    
     const newBlankRow = {
       id: Math.floor(Math.random() * 10000000),
       broj: rows.length + 1,
@@ -29,6 +30,17 @@ const MuiEditableGrid = () => {
     
     setRows(prevRows => [ ...prevRows, newBlankRow ] )
   }
+
+  function setNewValue(params) {
+    console.log(params)
+    const { value } = params
+    return {...params.row, Konto: value };
+  }
+  
+  function getNewValue(params) {
+    console.log(params)
+    return 50;
+  }
   
   return (
     <div className="editable-grid">
@@ -38,7 +50,13 @@ const MuiEditableGrid = () => {
       >
         Add row
       </button>
-      <DataGrid getCellClassName={params => 'grid-cell'} className="data-grid" rows={rows} columns={columns} />
+      <DataGrid 
+        className="data-grid"
+        columns={columns}
+        rows={rows}
+        getCellClassName={params => 'grid-cell'}
+        onCellEditStop={(params, event) => console.log(params, event)}
+      />
     </div>
   )
 }
